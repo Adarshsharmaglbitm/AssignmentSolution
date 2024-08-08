@@ -1,0 +1,63 @@
+import java.util.*;
+import java.util.*;
+class Solution 
+{
+	public static void main(String [] args)
+	{
+		Scanner sc =new Scanner(System.in);
+		int n=sc.nextInt();
+		int m=sc.nextInt();
+		int [][]a=new int[n][m];          
+		for(int i=0;i<n;i++)
+		{
+			for(int j=0;j<m;j++)
+			{
+				a[i][j]=sc.nextInt();
+			}
+		}
+		List<Integer> ans=spriralmatrix(a);
+		for(int rst:ans)
+		{
+		System.out.println(rst+" ");
+		}	
+	}
+	public static List<Integer>spriralmatrix(int [][]mat)
+	{
+		List<Integer> arr=new ArrayList<>();
+		int n=mat.length;
+		int m=mat[0].length;
+		int startrow=0,startcol=0;
+		int endrow=n-1,endcol=m-1;
+		while(startcol<=endcol  && startrow<endrow)
+		{
+			for(int i=startrow;i<=endrow;i++)
+			{
+				arr.add(mat[startcol][i]);	
+			}
+			startcol++;
+			for(int i=startcol;i<=endcol;i++)
+			{
+				arr.add(mat[i][endrow]);
+			}
+			endrow--;
+			if(startrow<=endrow)
+			{
+			for(int i=endrow;i>=startrow;i--)
+			{
+				arr.add(mat[endcol][i]);
+			}
+			}
+			endcol--;
+			 if(startrow<=endrow)
+			{
+			for(int i=endcol;i>=tartrow;i--)
+			{
+        			arr.add(mat[i][startrow]);
+			}
+			}
+			startrow++;
+			}
+    		return arr;
+		}
+
+}
