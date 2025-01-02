@@ -1,0 +1,21 @@
+class Solution {
+    public int[] vowelStrings(String[] words, int[][] queries) {
+        int n=words.length;
+        int []arr=new int[n+1];
+        Set<Character> vowel=new HashSet<>(Arrays.asList('a','e','i','o','u'));
+        for(int i=0;i<n;i++)
+        {
+            arr[i+1]=arr[i];
+            if(vowel.contains(words[i].charAt(0)) && vowel.contains(words[i].charAt(words[i].length()-1)))
+            {
+                arr[i+1]++;
+            }
+        }
+        int []ans=new int[queries.length];
+        for(int i=0;i<queries.length;i++)
+        {
+            ans[i]=arr[queries[i][1]+1]-arr[queries[i][0]];
+        }
+        return ans;
+    }
+}
